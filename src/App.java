@@ -5,7 +5,7 @@ public class App {
     // Set information för kund
         Kund A = new Kund("temp", "tempe", "tempm");
     // ge användaren möjligheten att välja metod
-        OH.läggTillOrder(A);
+        long orderID = OH.läggTillOrder(A); // vad ska jag använda id till?
         OH.taBortOrder(A);
         OH.visaOrdrar(A);
         OH.visaPreliminäraKostnader(A);

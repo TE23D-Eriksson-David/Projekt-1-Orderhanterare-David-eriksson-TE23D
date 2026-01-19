@@ -1,15 +1,16 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Order {
 
-    private String orderDatum;
+    private LocalDate orderDatum;
     private long orderID;
     private String kundNamn;  
     private String kundEmail;
 
     private ArrayList<Fastighet> efftersöktaFastigheter;
 
-    Order(String orderDatum, long orderID, String kundNamn, String kundEmail){
+    Order(LocalDate orderDatum, long orderID, String kundNamn, String kundEmail){
         this.orderDatum = orderDatum;
         this.orderID = orderID;
         this.kundNamn = kundNamn;
@@ -18,7 +19,7 @@ public class Order {
         efftersöktaFastigheter = new ArrayList<Fastighet>();
     }
 
-    public String getOrderDatum() {
+    public LocalDate getOrderDatum() {
         return orderDatum;
     }
 
@@ -36,6 +37,10 @@ public class Order {
 
     public void setKundEmail(String kundEmail) {
         this.kundEmail = kundEmail;
+    }
+
+    public void addEfftersöktaFastigheter(Fastighet F){
+        efftersöktaFastigheter.add(F);
     }
 
     
