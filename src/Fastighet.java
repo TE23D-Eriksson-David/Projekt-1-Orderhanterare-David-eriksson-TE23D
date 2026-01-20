@@ -6,8 +6,13 @@ public abstract class Fastighet {
     private float försäljningsPris;
     private float byggnadsKostndader; 
 
-    Fastighet(){
-        
+    Fastighet(float tomtPris, int tomtYta, int planYta, int antalRum, float försäljningsPris, float byggnadsKostndader){
+        this.tomtPris = tomtPris;
+        this.tomtYta = tomtYta;
+        this.planYta = planYta;
+        this.antalRum = antalRum;
+        this.försäljningsPris = försäljningsPris;
+        this.byggnadsKostndader = byggnadsKostndader;
     }
 
     public float get_tomtPris(){
@@ -34,7 +39,10 @@ public abstract class Fastighet {
         return antalRum;
     }
 
-
+    @Override
+    public String toString() {
+        return "\nTomt pris: "+ tomtPris+ "\nTomt yta: "+ tomtYta+"\nPlan yta: "+planYta+"\nAntal rum: "+antalRum+"\nFörsäljnings Pris: "+försäljningsPris+"\n Byggnadskostnader: "+byggnadsKostndader;
+    }
 
 
 

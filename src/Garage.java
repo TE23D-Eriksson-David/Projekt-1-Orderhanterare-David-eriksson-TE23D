@@ -2,14 +2,14 @@ public class Garage extends Fastighet {
 
     public int förvaringsSectioner;
 
-    Garage(int planYta, int antalRum, float försäljningsPris, float tomtPris, int tomtYta, int förvaringsSectioner, float byggnadsKostnader){
-        this.planYta = planYta;
-        this.antalRum = antalRum;
-        this.försäljningsPris = försäljningsPris; // ska använda konstruktorn av fastigheter !!
-        this.tomtPris = tomtPris;                  // har glömt måste fixa
-        this.tomtYta = tomtYta;
-        this.förvaringsSectioner = förvaringsSectioner;
-        this.byggnadsKostndader = byggnadsKostnader;
+    Garage(float tomtPris, int tomtYta, int planYta, int antalRum, float försäljningsPris, float byggnadsKostndader, int förvaringsSectioner){
+        super(tomtPris, tomtYta, planYta, antalRum, försäljningsPris, byggnadsKostndader);   
 
+        this.förvaringsSectioner = förvaringsSectioner;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+ "Förvarings sectioner: "+ förvaringsSectioner+ "";
     }
 }

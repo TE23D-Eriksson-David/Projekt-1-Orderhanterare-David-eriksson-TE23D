@@ -1,5 +1,4 @@
 public class Lagnehet {
-
     public int planYta; 
     public int antalRum;
     public float försäljningsPris;
@@ -8,5 +7,10 @@ public class Lagnehet {
         this.planYta = planYta;
         this.antalRum = antalRum;
         this.försäljningsPris = försäljningsPris;
+    }
+
+    @Override
+    public String toString() {
+        return "\nPlan yta: "+planYta+"\nAntal rum: "+antalRum+"\nFörsäljnings pris: "+försäljningsPris;
     }
 }

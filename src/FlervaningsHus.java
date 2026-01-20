@@ -5,18 +5,22 @@ public class FlervaningsHus extends Fastighet { // SKA INTE IMPLEMENTERA VARIABL
     public int lägenheterPärPlan; 
     public int antalFöråd;
     public int förådsYta;
-    public float byggnadsKostnader;
     public boolean Trapphus; 
     public boolean Hiss;
     public ArrayList<Lagnehet> Lägenheter = new ArrayList<Lagnehet>();   
 
-    FlervaningsHus(int antalVåningsplan, int lägenheterPärPlan, int antalFöråd, int förådsYta, float byggnadsKostnader, boolean Trapphus, boolean Hiss){
-        this.antalVåningsplan = antalVåningsplan;
+    FlervaningsHus(int antalVåningsplan, int lägenheterPärPlan, int antalFöråd, int förådsYta, boolean Trapphus, boolean Hiss, float tomtPris, int tomtYta, int totalPlanYta, int antalRum, float försäljningsPris, float byggnadsKostndader){
+        super(tomtPris, tomtYta, totalPlanYta, antalRum, försäljningsPris, byggnadsKostndader);
+        this.antalVåningsplan = antalVåningsplan; // Antalrum bör inte implementras jag behöver något slags gränsnitt.
         this.lägenheterPärPlan = lägenheterPärPlan;
         this.antalFöråd = antalFöråd;
         this.förådsYta = förådsYta;
-        this.byggnadsKostnader = byggnadsKostnader;
         this.Trapphus = Trapphus;
         this.Hiss = Hiss;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nAntal våningsplan: "+antalVåningsplan+"\nLägenheter pär plan: "+lägenheterPärPlan+"\nAntal föråd: "+antalFöråd+"\nFöråds yta: "+förådsYta+"\nTrapphus: "+ Trapphus+ "\nHiss: "+Hiss+ "\n"+ Lägenheter.getFirst().toString(); 
     }
 }

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.time.LocalDate;
-import java.math.*; // Måste fixas !!
+import java.math.*; // Måste fixas !! ska barra implementera random 
 import java.util.Scanner;
 
 public class OrderHanterare {
@@ -12,12 +13,15 @@ public class OrderHanterare {
         ordrar = new ArrayList<Order>();
     }
 
+
     public long läggTillOrder(Kund A) {
+
         Scanner SC = new Scanner(System.in);
         int val = 0;
         boolean CreatingAnOrder = true;
         LocalDate orderDatum = LocalDate.now();
-        int orderID = (int) (Math.random() * 9999); // !!!
+        int orderID = (int) (Math.random() * 9999); 
+
         Order O = new Order(orderDatum, orderID, A.get_namn() + "_" + A.get_effternamn(), A.get_email());
 
         while (CreatingAnOrder) {
@@ -44,158 +48,82 @@ public class OrderHanterare {
             int tomtYta = 0;
             int antalRum = 0;
             float försäljningsPris = 0f;
+            float byggnadsKostndader = 0f;
+            
             switch (val) {
                 case 1:
 
-                    System.out.println(
-                            " Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n");
-                    System.out.println("Ange: Planyta (m2)");
-                    while (V == true) {
-                        try {
-                            planYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    System.out.println(" Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
 
-                    System.out.println("Ange: Antal rum");
-                    while (V == true) {
-                        try {
-                            antalRum = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    List<Object> lp = ValMetod("Plan yta (m2)", "int", SC);
+                    planYta = (int) lp.get(0);
+                    lp.clear();
 
-                    System.out.println("Ange: Försäljnings pris ");
-                    while (V == true) {
-                        try {
-                            försäljningsPris = SC.nextFloat();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lp = ValMetod("Antal rum", "int", SC);
+                    antalRum = (int) lp.get(0);
+                    lp.clear();
 
-                    System.out.println("Ange: Tomt pris ");
-                    while (V == true) {
-                        try {
-                            tomtPris = SC.nextFloat();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lp = ValMetod("Försäljnings pris", "float", SC);
+                    försäljningsPris = (float) lp.get(0);
+                    lp.clear();
 
-                    System.out.println("Ange: Tomt yta (m2)");
-                    while (V == true) {
-                        try {
-                            tomtYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lp = ValMetod("Tomt pris", "float", SC);
+                    tomtPris = (float) lp.get(0);
+                    lp.clear();
 
-                    Planhus P = new Planhus(planYta, antalRum, försäljningsPris, tomtPris, tomtYta);
+                    lp = ValMetod("Tomt yta (m2)", "int", SC);
+                    tomtYta = (int) lp.get(0);
+                    lp.clear();
+
+                    lp = ValMetod("Byggnads Kostnader", "float", SC);
+                    byggnadsKostndader = (float) lp.get(0);
+                    lp.clear();
+
+                    Planhus P = new Planhus(planYta, antalRum, försäljningsPris, tomtPris, tomtYta, byggnadsKostndader);
                     O.addEfftersöktaFastigheter(P);
                     System.out.println("Villa skappad");
                     break;
 
                 case 2:
+
                     int förvaringsSectioner = 0;
-                    System.out.println(
-                            " Du har valt att skappa ett: Garage \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Förvarings sectioner \n");
-                    System.out.println("Ange: Planyta (m2)");
-                    while (V == true) {
-                        try {
-                            planYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    System.out.println(" Du har valt att skappa ett: Garage \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Förvarings sectioner \n");
 
-                    System.out.println("Ange: Antal rum");
-                    while (V == true) {
-                        try {
-                            antalRum = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    List<Object> lg = ValMetod("Plan yta (m2)", "int", SC);
+                    planYta = (int) lg.get(0);
+                    lg.clear();
 
-                    System.out.println("Ange: Förvarings sectioner");
-                    while (V == true) {
-                        try {
-                            förvaringsSectioner = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lg = ValMetod("Antal rum", "int", SC);
+                    antalRum = (int) lg.get(0);
+                    lg.clear();
 
-                    System.out.println("Ange: Försäljnings pris ");
-                    while (V == true) {
-                        try {
-                            försäljningsPris = SC.nextFloat();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lg = ValMetod("Förvarings sectioner", "int", SC);
+                    förvaringsSectioner = (int) lg.get(0);
+                    lg.clear();
 
-                    System.out.println("Ange: Tomt pris ");
-                    while (V == true) {
-                        try {
-                            tomtPris = SC.nextFloat();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lg = ValMetod("Försäljnings pris", "float", SC);
+                    försäljningsPris = (float) lg.get(0);
+                    lg.clear();
 
-                    System.out.println("Ange: Tomt yta (m2)");
-                    while (V == true) {
-                        try {
-                            tomtYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lg = ValMetod("Tomt pris", "float", SC);
+                    tomtPris = (float) lg.get(0);
+                    lg.clear();
 
-                    Garage G = new Garage(planYta, antalRum, försäljningsPris, tomtPris, tomtYta, förvaringsSectioner);
+                    lg = ValMetod("Tomt yta (m2)", "int", SC);
+                    tomtYta = (int) lg.get(0);
+                    lg.clear();
+
+                    lg = ValMetod("Byggnads kostnader", "float", SC);
+                    byggnadsKostndader = (float) lg.get(0);
+                    lg.clear();
+
+                    Garage G = new Garage(tomtPris, tomtYta, planYta, antalRum, försäljningsPris, byggnadsKostndader, förvaringsSectioner);
                     O.addEfftersöktaFastigheter(G);
                     System.out.println("Garage skappat");
                     break;
 
                 case 3:
+
                     int antalVåningsplan = 0;
                     int lägenheterPärPlan = 0;
                     int antalFöråd = 0;
@@ -203,146 +131,88 @@ public class OrderHanterare {
                     boolean Trapphus = true;
                     boolean Hiss = false;
 
-                    System.out.println(
-                            " Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat \n");
-                    System.out.println("Ange: Tomt yta (m2)");
-                    while (V == true) {
-                        try {
-                            tomtYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    System.out.println(" Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat \n");
 
-                    System.out.println("Ange: Tomt pris");
-                    while (V == true) {
-                        try {
-                            tomtPris = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    List<Object> lf = ValMetod("Tomt yta", "int", SC);
+                    tomtYta = (int) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Antal våningsplan ");
-                    while (V == true) {
-                        try {
-                            antalVåningsplan = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lf = ValMetod("Tomt pris", "float", SC);
+                    tomtPris = (float) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Lägenheter pär plan ");
-                    while (V == true) {
-                        try {
-                            lägenheterPärPlan = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lf = ValMetod("Antal våningsplan", "int", SC);
+                    antalVåningsplan = (int) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Antal fråd ");
-                    while (V == true) {
-                        try {
-                            antalFöråd = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lf = ValMetod("Lägenheter pär plan", "int", SC);
+                    lägenheterPärPlan = (int) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Föråds yta (m2)");
-                    while (V == true) {
-                        try {
-                            förådsYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lf = ValMetod("Antal föråd", "int", SC);
+                    antalFöråd = (int) lf.get(0);
+                    lf.clear();
 
-                    // TRAPPHUS
-                    // HISS
+                    lf = ValMetod("Föråds yta (m2)", "int", SC);
+                    förådsYta = (int) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange dimentionerna för lägenhetterna. ");
+                    lf = ValMetod("Hiss", "boolean", SC);
+                    Hiss = (boolean) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Plan yta (m2)");
-                    while (V == true) {
-                        try {
-                            planYta = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lf = ValMetod("Trapphus", "boolean", SC);
+                    Trapphus = (boolean) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Antal rum");
-                    while (V == true) {
-                        try {
-                            antalRum = SC.nextInt();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    System.out.println("Ange dimentionerna för lägenhetterna. Alla lägenhetter är lika! ");
+                    lf = ValMetod("Plan yta (m2)", "int", SC);
+                    planYta = (int) lf.get(0);
+                    lf.clear();
 
-                    System.out.println("Ange: Försäljningspris");
-                    while (V == true) {
-                        try {
-                            försäljningsPris = SC.nextFloat();
-                            V = false;
-                        } catch (Exception e) {
-                            V = true;
-                            throw new IllegalArgumentException("Dena metod förväntar sig en int");
-                        }
-                    }
-                    V = true;
+                    lf = ValMetod("Antal rum", "int", SC);
+                    antalRum = (int) lf.get(0);
+                    lf.clear();
 
+                    lf = ValMetod("Försäljningspris", "float", SC);
+                    försäljningsPris = (float) lf.get(0);
+                    lf.clear();
+
+                    lf = ValMetod("Byggnads kostnader", "float", SC);
+                    byggnadsKostndader = (float) lf.get(0);
+                    lf.clear();
+                    
                     FlervaningsHus F = new FlervaningsHus(antalVåningsplan, lägenheterPärPlan, antalFöråd, förådsYta,
-                            Trapphus, Hiss);
-                    for (int i = 0; i < planYta * antalRum; i++) {
+                            Trapphus, Hiss, tomtPris, tomtYta, planYta, antalRum, försäljningsPris,
+                            byggnadsKostndader);
+                    for (int i = 0; i < antalVåningsplan * antalRum; i++) {
                         Lagnehet L = new Lagnehet(planYta, antalRum, försäljningsPris);
                         F.Lägenheter.add(L);
                     }
                     O.addEfftersöktaFastigheter(F);
+                    System.out.println("Flervåningshus skappat");
                     break;
+
                 case 4:
                     System.out.println("förslutter order");
                     CreatingAnOrder = false;
                     break;
             }
         }
-
         return orderID; // order ID + order Datum
     }
 
+
     public void taBortOrder(Kund A) {
+
         Scanner SC2 = new Scanner(System.in);
         boolean loop = true;
         boolean inerloop = true;
-        int användarID =0;
+        int användarID = 0;
+
         visaOrdrar(A);
         System.out.println("Vilken order vill du ta bort? \n");
+
         while (loop) {
             if (inerloop == false) {
                 System.out.println("det finns ingen order med det ID");
@@ -373,38 +243,45 @@ public class OrderHanterare {
         }
     }
 
+
     public void visaOrdrar(Kund A) {
         for (Order order : ordrar) {
             System.out.println(order);
         }
     }
 
+
     public void visaProspecteradVist(Kund A) {
-        double summa =0;
+        double summa = 0;
         for (Order order : ordrar) {
-           ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
-           for (Fastighet fastighet : efftersöktaFastigheter) {
-            float pris = fastighet.get_försäljningsPris();
-            summa =+ pris;
-           }
+            ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
+            for (Fastighet fastighet : efftersöktaFastigheter) {
+                float pris = fastighet.get_försäljningsPris();
+                summa = +pris;
+            }
         }
-        System.out.println("Totalla vinst om alla order går igenom och fastigheterna säljs blir: "+summa+"kr");
+        System.out.println("Totalla vinst om alla order går igenom och fastigheterna säljs blir: " + summa + "kr");
     }
+
+
 
     public void visaPreliminäraKostnader(Kund A) {
-            double summa =0;
+        double summa = 0;
         for (Order order : ordrar) {
-           ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
-           for (Fastighet fastighet : efftersöktaFastigheter) {
-            float Tpris = fastighet.get_tomtPris();
-            float Bpris = fastighet.get_byggnadsKostnader(); 
-            summa =+ Tpris + Bpris;
-           }
+            ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
+            for (Fastighet fastighet : efftersöktaFastigheter) {
+                float Tpris = fastighet.get_tomtPris();
+                float Bpris = fastighet.get_byggnadsKostnader();
+                summa = +Tpris + Bpris;
+            }
         }
-        System.out.println(" Kostnaderna för orderna samanlagt blir: "+summa+"kr");
+        System.out.println(" Kostnaderna för orderna samanlagt blir: " + summa + "kr");
     }
 
-    void ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
+
+
+    List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
+        List<Object> ReturnLista = new ArrayList<>();
         boolean V = true;
         System.out.println("Ange: " + Varibelnamn);
         while (V == true) {
@@ -412,30 +289,35 @@ public class OrderHanterare {
 
                 switch (datatyp) {
                     case "int":
-                        int tal = SC.nextInt();
+                        int talInt = SC.nextInt();
+                        ReturnLista.add(talInt);
                         SC.nextLine();
                         V = false;
                         break;
 
                     case "String":
-                        String mening = SC.nextLine();
+                        String sträng = SC.nextLine();
+                        ReturnLista.add(sträng);
                         V = false;
                         break;
 
                     case "long":
-                        Long tal = SC.nextLong();
+                        Long talLong = SC.nextLong();
+                        ReturnLista.add(talLong);
                         SC.nextLine();
                         V = false;
                         break;
 
                     case "boolean":
-                        boolean tal = SC.nextBoolean(); // Förväntar sig T & F tror jag.
+                        boolean talboolean = SC.nextBoolean(); // Förväntar sig T & F tror jag.
+                        ReturnLista.add(talboolean);
                         SC.nextLine();
                         V = false;
                         break;
 
                     case "float":
-                        float tal = SC.nextFloat();
+                        float talFloat = SC.nextFloat();
+                        ReturnLista.add(talFloat);
                         SC.nextLine();
                         V = false;
                         break;
@@ -446,9 +328,8 @@ public class OrderHanterare {
             }
 
         }
-        V = true;
 
-        return 
+        return ReturnLista;
     } // ska returnera obejekt med rätt datatyp
 
 }

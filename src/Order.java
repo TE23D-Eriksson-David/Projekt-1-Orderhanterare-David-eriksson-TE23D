@@ -45,15 +45,20 @@ public class Order {
 
     @Override
     public String toString() {
+        String fastighetsinformation = "[odefinerade]";
         for (Fastighet fastighet : efftersöktaFastigheter) {
-            fastighet.get_försäljningsPris();
-            fastighet.get_byggnadsKostnader();
-            fastighet.get_planYta();
-            fastighet.get_tomtYta();
-            fastighet.get_tomtPris();
-            fastighet.get_antalRum();
-        }
-        return "Order datum: " +orderDatum+ " Order ID: "+orderID+" Kund namn: "+kundNamn+" Kund email: "+kundEmail+" Fastigheter: "+efftersöktaFastigheter+"" ; // måste fixa metod för att visa fastigheter
+            if (fastighet instanceof Planhus) {
+                fastighetsinformation +=  ((Planhus)fastighet).toString();
+            } 
+            if (fastighet instanceof Garage) {
+                fastighetsinformation +=  ((Garage)fastighet).toString();
+            }
+            if (fastighet instanceof FlervaningsHus) {
+                fastighetsinformation +=  ((FlervaningsHus)fastighet).toString();
+            }
+        }      
+
+        return "Order datum: " +orderDatum+ " Order ID: "+orderID+" Kund namn: "+kundNamn+" Kund email: "+kundEmail+"\n----------------- Fastigheter: "+fastighetsinformation+"\n----------------" ; // måste fixa metod för att visa fastigheter
     }
 
 }
