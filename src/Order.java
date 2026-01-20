@@ -4,13 +4,13 @@ import java.time.LocalDate;
 public class Order {
 
     private LocalDate orderDatum;
-    private long orderID;
+    private int orderID;
     private String kundNamn;  
     private String kundEmail;
 
     private ArrayList<Fastighet> efftersöktaFastigheter;
 
-    Order(LocalDate orderDatum, long orderID, String kundNamn, String kundEmail){
+    Order(LocalDate orderDatum, int orderID, String kundNamn, String kundEmail){
         this.orderDatum = orderDatum;
         this.orderID = orderID;
         this.kundNamn = kundNamn;
@@ -23,7 +23,7 @@ public class Order {
         return orderDatum;
     }
 
-    public long getOrderID() {
+    public int getOrderID() {
         return orderID;
     }
 
@@ -43,6 +43,17 @@ public class Order {
         efftersöktaFastigheter.add(F);
     }
 
-    
+    @Override
+    public String toString() {
+        for (Fastighet fastighet : efftersöktaFastigheter) {
+            fastighet.get_försäljningsPris();
+            fastighet.get_byggnadsKostnader();
+            fastighet.get_planYta();
+            fastighet.get_tomtYta();
+            fastighet.get_tomtPris();
+            fastighet.get_antalRum();
+        }
+        return "Order datum: " +orderDatum+ " Order ID: "+orderID+" Kund namn: "+kundNamn+" Kund email: "+kundEmail+" Fastigheter: "+efftersöktaFastigheter+"" ; // måste fixa metod för att visa fastigheter
+    }
 
 }

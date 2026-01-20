@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.time.LocalDate;
 import java.math.*; // Måste fixas !!
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class OrderHanterare {
         int val = 0;
         boolean CreatingAnOrder = true;
         LocalDate orderDatum = LocalDate.now();
-        int orderID = (int) (Math.random() * 10000); // !!!
+        int orderID = (int) (Math.random() * 9999); // !!!
         Order O = new Order(orderDatum, orderID, A.get_namn() + "_" + A.get_effternamn(), A.get_email());
 
         while (CreatingAnOrder) {
@@ -336,72 +337,118 @@ public class OrderHanterare {
     }
 
     public void taBortOrder(Kund A) {
+        Scanner SC2 = new Scanner(System.in);
+        boolean loop = true;
+        boolean inerloop = true;
+        int användarID =0;
+        visaOrdrar(A);
+        System.out.println("Vilken order vill du ta bort? \n");
+        while (loop) {
+            if (inerloop == false) {
+                System.out.println("det finns ingen order med det ID");
+            }
+            while (inerloop) {
+                try {
+                    System.out.print("Ange order ID: ");
+                    användarID = SC2.nextInt();
+                    SC2.nextLine();
+                    inerloop = false;
+                } catch (Exception e) {
+                    inerloop = true;
+                    throw new InputMismatchException("Fel input förväntar sig en Int");
+                }
+                if (användarID > 10000) {
+                    inerloop = true;
+                    System.out.println("du kan inte ange ett id störe än 4 sifror");
+                }
+            }
+            for (Order order : ordrar) {
+                if (användarID == order.getOrderID()) {
+                    loop = false;
+                    ordrar.remove(order);
+                    System.out.println("Order bortagen");
+                    break;
+                }
+            }
+        }
     }
 
     public void visaOrdrar(Kund A) {
+        for (Order order : ordrar) {
+            System.out.println(order);
+        }
     }
 
     public void visaProspecteradVist(Kund A) {
+        double summa =0;
+        for (Order order : ordrar) {
+           ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
+           for (Fastighet fastighet : efftersöktaFastigheter) {
+            float pris = fastighet.get_försäljningsPris();
+            summa =+ pris;
+           }
+        }
+        System.out.println("Totalla vinst om alla order går igenom och fastigheterna säljs blir: "+summa+"kr");
     }
 
     public void visaPreliminäraKostnader(Kund A) {
+            double summa =0;
+        for (Order order : ordrar) {
+           ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
+           for (Fastighet fastighet : efftersöktaFastigheter) {
+            float Tpris = fastighet.get_tomtPris();
+            float Bpris = fastighet.get_byggnadsKostnader(); 
+            summa =+ Tpris + Bpris;
+           }
+        }
+        System.out.println(" Kostnaderna för orderna samanlagt blir: "+summa+"kr");
     }
 
     void ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
         boolean V = true;
-        System.out.println("Ange: " + Varibelnamn + " ");
+        System.out.println("Ange: " + Varibelnamn);
         while (V == true) {
-            switch (datatyp) {
-                case "int":
-                    try {
-                int tal = SC.nextInt();
-                V = false;
+            try {
+
+                switch (datatyp) {
+                    case "int":
+                        int tal = SC.nextInt();
+                        SC.nextLine();
+                        V = false;
+                        break;
+
+                    case "String":
+                        String mening = SC.nextLine();
+                        V = false;
+                        break;
+
+                    case "long":
+                        Long tal = SC.nextLong();
+                        SC.nextLine();
+                        V = false;
+                        break;
+
+                    case "boolean":
+                        boolean tal = SC.nextBoolean(); // Förväntar sig T & F tror jag.
+                        SC.nextLine();
+                        V = false;
+                        break;
+
+                    case "float":
+                        float tal = SC.nextFloat();
+                        SC.nextLine();
+                        V = false;
+                        break;
+                }
             } catch (Exception e) {
                 V = true;
-                throw new IllegalArgumentException("Dena metod förväntar sig en int");
-            }
-                    break;
-                case "String":
-                    try {
-                String mening = SC.nextLine();
-                V = false;
-            } catch (Exception e) {
-                V = true;
-                throw new IllegalArgumentException("Dena metod förväntar sig en String");
-            }
-                    break;
-                case "long":
-                try {
-                Long tal = SC.nextLong();
-                V = false;
-            } catch (Exception e) {
-                V = true;
-                throw new IllegalArgumentException("Dena metod förväntar sig en Long");
-            }
-                    break;
-                case "boolean":
-                try {
-                boolean tal = SC.nextBoolean(); // Förväntar sig T & F tror jag.
-                V = false;
-            } catch (Exception e) {
-                V = true;
-                throw new IllegalArgumentException("Dena metod förväntar sig en boolean (T & F)");
-            }
-                    break;
-                case "float":
-                    try {
-                float tal = SC.nextFloat();
-                V = false;
-            } catch (Exception e) {
-                V = true;
-                throw new IllegalArgumentException("Dena metod förväntar sig en float");
-            }
-                    break;
+                throw new IllegalArgumentException("Dena metod förväntar sig en " + datatyp + "");
             }
 
         }
         V = true;
 
-    } // ska returnera obejekt med rätt datatyp 
+        return 
+    } // ska returnera obejekt med rätt datatyp
 
 }
