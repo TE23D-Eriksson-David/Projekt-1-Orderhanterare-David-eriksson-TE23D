@@ -13,14 +13,13 @@ public class OrderHanterare {
         ordrar = new ArrayList<Order>();
     }
 
-
-    public long läggTillOrder(Kund A) {
+    public void läggTillOrder(Kund A) {
 
         Scanner SC = new Scanner(System.in);
         int val = 0;
         boolean CreatingAnOrder = true;
         LocalDate orderDatum = LocalDate.now();
-        int orderID = (int) (Math.random() * 9999); 
+        int orderID = (int) (Math.random() * 9999);
 
         Order O = new Order(orderDatum, orderID, A.get_namn() + "_" + A.get_effternamn(), A.get_email());
 
@@ -49,11 +48,12 @@ public class OrderHanterare {
             int antalRum = 0;
             float försäljningsPris = 0f;
             float byggnadsKostndader = 0f;
-            
+
             switch (val) {
                 case 1:
 
-                    System.out.println(" Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
+                    System.out.println(
+                            " Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
 
                     List<Object> lp = ValMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) lp.get(0);
@@ -87,7 +87,8 @@ public class OrderHanterare {
                 case 2:
 
                     int förvaringsSectioner = 0;
-                    System.out.println(" Du har valt att skappa ett: Garage \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Förvarings sectioner \n");
+                    System.out.println(
+                            " Du har valt att skappa ett: Garage \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Förvarings sectioner \n");
 
                     List<Object> lg = ValMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) lg.get(0);
@@ -117,7 +118,8 @@ public class OrderHanterare {
                     byggnadsKostndader = (float) lg.get(0);
                     lg.clear();
 
-                    Garage G = new Garage(tomtPris, tomtYta, planYta, antalRum, försäljningsPris, byggnadsKostndader, förvaringsSectioner);
+                    Garage G = new Garage(tomtPris, tomtYta, planYta, antalRum, försäljningsPris, byggnadsKostndader,
+                            förvaringsSectioner);
                     O.addEfftersöktaFastigheter(G);
                     System.out.println("Garage skappat");
                     break;
@@ -131,7 +133,8 @@ public class OrderHanterare {
                     boolean Trapphus = true;
                     boolean Hiss = false;
 
-                    System.out.println(" Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat \n");
+                    System.out.println(
+                            " Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat \n");
 
                     List<Object> lf = ValMetod("Tomt yta", "int", SC);
                     tomtYta = (int) lf.get(0);
@@ -181,7 +184,7 @@ public class OrderHanterare {
                     lf = ValMetod("Byggnads kostnader", "float", SC);
                     byggnadsKostndader = (float) lf.get(0);
                     lf.clear();
-                    
+
                     FlervaningsHus F = new FlervaningsHus(antalVåningsplan, lägenheterPärPlan, antalFöråd, förådsYta,
                             Trapphus, Hiss, tomtPris, tomtYta, planYta, antalRum, försäljningsPris,
                             byggnadsKostndader);
@@ -199,9 +202,7 @@ public class OrderHanterare {
                     break;
             }
         }
-        return orderID; // order ID + order Datum
     }
-
 
     public void taBortOrder(Kund A) {
 
@@ -243,13 +244,11 @@ public class OrderHanterare {
         }
     }
 
-
     public void visaOrdrar(Kund A) {
         for (Order order : ordrar) {
             System.out.println(order);
         }
     }
-
 
     public void visaProspecteradVist(Kund A) {
         double summa = 0;
@@ -262,8 +261,6 @@ public class OrderHanterare {
         }
         System.out.println("Totalla vinst om alla order går igenom och fastigheterna säljs blir: " + summa + "kr");
     }
-
-
 
     public void visaPreliminäraKostnader(Kund A) {
         double summa = 0;
@@ -278,9 +275,7 @@ public class OrderHanterare {
         System.out.println(" Kostnaderna för orderna samanlagt blir: " + summa + "kr");
     }
 
-
-
-    List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
+    public List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
         List<Object> ReturnLista = new ArrayList<>();
         boolean V = true;
         System.out.println("Ange: " + Varibelnamn);
