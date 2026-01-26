@@ -21,6 +21,6 @@ public class FlervaningsHus extends Fastighet { // SKA INTE IMPLEMENTERA VARIABL
 
     @Override
     public String toString() {
-        return super.toString() + "\nAntal våningsplan: "+antalVåningsplan+"\nLägenheter pär plan: "+lägenheterPärPlan+"\nAntal föråd: "+antalFöråd+"\nFöråds yta: "+förådsYta+"\nTrapphus: "+ Trapphus+ "\nHiss: "+Hiss+ "\n"+ Lägenheter.getFirst().toString(); 
+        return super.toString() + "\nAntal våningsplan: "+antalVåningsplan+"\nLägenheter pär plan: "+lägenheterPärPlan+"\nAntal föråd: "+antalFöråd+"\nFöråds yta: "+förådsYta+"\nTrapphus: "+ Trapphus+ "\nHiss: "+Hiss+ "\n----------------\nLägenhets specifikationer"+ Lägenheter.getFirst().toString(); 
     }
 }

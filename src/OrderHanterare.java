@@ -24,6 +24,7 @@ public class OrderHanterare {
         Order O = new Order(orderDatum, orderID, A.get_namn() + "_" + A.get_effternamn(), A.get_email());
 
         while (CreatingAnOrder) {
+            System.out.println("-----------------------------");
             System.out
                     .println("Skappa fastighet: \n 1. Planhus \n 2. Garagae \n 3. Flervåningshus \n 4. Avsluta order");
             boolean V = true;
@@ -37,7 +38,7 @@ public class OrderHanterare {
                 }
                 if (val > 3 && val < 1) {
                     V = true;
-                    throw new IllegalArgumentException("Ange ett val mellan 1-3");
+                    System.out.println("Ange ett val mellan 1-3");
                 }
             }
             V = true;
@@ -52,8 +53,9 @@ public class OrderHanterare {
             switch (val) {
                 case 1:
 
+                System.out.println("--------------------");
                     System.out.println(
-                            " Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
+                            "Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
 
                     List<Object> lp = ValMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) lp.get(0);
@@ -81,12 +83,14 @@ public class OrderHanterare {
 
                     Planhus P = new Planhus(planYta, antalRum, försäljningsPris, tomtPris, tomtYta, byggnadsKostndader);
                     O.addEfftersöktaFastigheter(P);
+                    System.out.println("-----------------------");
                     System.out.println("Villa skappad");
                     break;
 
                 case 2:
 
                     int förvaringsSectioner = 0;
+                    System.out.println("--------------------");
                     System.out.println(
                             " Du har valt att skappa ett: Garage \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Förvarings sectioner \n");
 
@@ -121,6 +125,7 @@ public class OrderHanterare {
                     Garage G = new Garage(tomtPris, tomtYta, planYta, antalRum, försäljningsPris, byggnadsKostndader,
                             förvaringsSectioner);
                     O.addEfftersöktaFastigheter(G);
+                    System.out.println("--------------------");
                     System.out.println("Garage skappat");
                     break;
 
@@ -133,8 +138,9 @@ public class OrderHanterare {
                     boolean Trapphus = true;
                     boolean Hiss = false;
 
+                    System.out.println("--------------------");
                     System.out.println(
-                            " Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat \n");
+                            " Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat");
 
                     List<Object> lf = ValMetod("Tomt yta", "int", SC);
                     tomtYta = (int) lf.get(0);
@@ -168,7 +174,8 @@ public class OrderHanterare {
                     Trapphus = (boolean) lf.get(0);
                     lf.clear();
 
-                    System.out.println("Ange dimentionerna för lägenhetterna. Alla lägenhetter är lika! ");
+                    System.out.println("-----------------------");
+                    System.out.println("Ange dimentionerna för lägenhetterna.");
                     lf = ValMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) lf.get(0);
                     lf.clear();
@@ -193,11 +200,15 @@ public class OrderHanterare {
                         F.Lägenheter.add(L);
                     }
                     O.addEfftersöktaFastigheter(F);
+                    System.out.println("--------------------");
                     System.out.println("Flervåningshus skappat");
                     break;
 
                 case 4:
+                    ordrar.add(O);
+                    System.out.println("----------------------");
                     System.out.println("förslutter order");
+                    System.out.println("----------------------");
                     CreatingAnOrder = false;
                     break;
             }
@@ -210,9 +221,10 @@ public class OrderHanterare {
         boolean loop = true;
         boolean inerloop = true;
         int användarID = 0;
-
+        System.out.println("------------------------");
         visaOrdrar(A);
-        System.out.println("Vilken order vill du ta bort? \n");
+        System.out.println("-----------------------------------");
+        System.out.println("Vilken order vill du ta bort?");
 
         while (loop) {
             if (inerloop == false) {
@@ -246,7 +258,8 @@ public class OrderHanterare {
 
     public void visaOrdrar(Kund A) {
         for (Order order : ordrar) {
-            System.out.println(order);
+            System.out.println("-----------------------" );
+            System.out.println(order);         
         }
     }
 
@@ -278,16 +291,29 @@ public class OrderHanterare {
     public List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
         List<Object> ReturnLista = new ArrayList<>();
         boolean V = true;
+        System.out.println("---------------------");
         System.out.println("Ange: " + Varibelnamn);
         while (V == true) {
             try {
 
                 switch (datatyp) {
                     case "int":
-                        int talInt = SC.nextInt();
+                        boolean klar = false;
+                        int talInt = 0;
+                        while (klar == false) {
+                            talInt = SC.nextInt();
+                            if (talInt < 1) {
+                                klar = false;
+                                System.out.println("Ange ett värde större än 0");
+                                System.out.println("Ange: "+Varibelnamn);
+                            } else {
+                                klar = true;
+                            }
+                        }
                         ReturnLista.add(talInt);
                         SC.nextLine();
                         V = false;
+
                         break;
 
                     case "String":
@@ -304,7 +330,8 @@ public class OrderHanterare {
                         break;
 
                     case "boolean":
-                        boolean talboolean = SC.nextBoolean(); // Förväntar sig T & F tror jag.
+                        System.out.println("\"true\" eller \"false\"");
+                        boolean talboolean = SC.nextBoolean(); 
                         ReturnLista.add(talboolean);
                         SC.nextLine();
                         V = false;

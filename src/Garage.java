@@ -10,6 +10,6 @@ public class Garage extends Fastighet {
 
     @Override
     public String toString() {
-        return super.toString()+ "Förvarings sectioner: "+ förvaringsSectioner+ "";
+        return super.toString()+ "\nFörvarings sectioner: "+ förvaringsSectioner+ "";
     }
 }

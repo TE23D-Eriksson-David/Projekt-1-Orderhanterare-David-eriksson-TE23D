@@ -41,7 +41,7 @@ public abstract class Fastighet {
 
     @Override
     public String toString() {
-        return "\nTomt pris: "+ tomtPris+ "\nTomt yta: "+ tomtYta+"\nPlan yta: "+planYta+"\nAntal rum: "+antalRum+"\nFörsäljnings Pris: "+försäljningsPris+"\n Byggnadskostnader: "+byggnadsKostndader;
+        return "\nTomt pris: "+ tomtPris+ "\nTomt yta: "+ tomtYta+"\nPlan yta: "+planYta+"\nAntal rum: "+antalRum+"\nFörsäljnings Pris: "+försäljningsPris+"\nByggnadskostnader: "+byggnadsKostndader;
     }
 
 

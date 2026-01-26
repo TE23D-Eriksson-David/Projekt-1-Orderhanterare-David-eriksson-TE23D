@@ -45,20 +45,24 @@ public class Order {
 
     @Override
     public String toString() {
-        String fastighetsinformation = "[odefinerade]";
+        String fastighetsinformation = "";
         for (Fastighet fastighet : efftersöktaFastigheter) {
             if (fastighet instanceof Planhus) {
+                fastighetsinformation += "Fastighets typ: Planhus";
                 fastighetsinformation +=  ((Planhus)fastighet).toString();
             } 
             if (fastighet instanceof Garage) {
+                fastighetsinformation += "Fastighets typ: Garage";
                 fastighetsinformation +=  ((Garage)fastighet).toString();
             }
             if (fastighet instanceof FlervaningsHus) {
+                fastighetsinformation += "Fastighets typ: Flervåningshus";
                 fastighetsinformation +=  ((FlervaningsHus)fastighet).toString();
             }
+            fastighetsinformation += "\n------------------------\n";
         }      
 
-        return "Order datum: " +orderDatum+ " Order ID: "+orderID+" Kund namn: "+kundNamn+" Kund email: "+kundEmail+"\n----------------- Fastigheter: "+fastighetsinformation+"\n----------------" ; // måste fixa metod för att visa fastigheter
+        return "Order datum: " +orderDatum+ "\nOrder ID: "+orderID+"\nKund namn: "+kundNamn+"\nKund email: "+kundEmail+"\n------------------------- \n"+fastighetsinformation+"" ; // måste fixa metod för att visa fastigheter
     }
 
 }

@@ -40,6 +40,8 @@ public class App {
                 }
             }
 
+
+
             switch (val) {
                 case 1:
                     OH.läggTillOrder(A); // vad ska jag använda id till?
