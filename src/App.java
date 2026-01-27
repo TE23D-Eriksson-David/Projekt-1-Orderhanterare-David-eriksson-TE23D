@@ -11,6 +11,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         OrderHanterare OH = new OrderHanterare();
         Scanner Input = new Scanner(System.in);
+        boolean mainloop = true;
         boolean klar;
         int val;
         // Set information för kund
@@ -26,7 +27,7 @@ public class App {
                 try {
                     val = Input.nextInt();
                     klar = true;
-                    if (val < 1 || val > 5) {
+                    if (val < 1 || val > 6) {
                         klar = false;
                         System.out.println("Ange en sifra som korispoderar till en av valen!");
                         System.out.print("Ange: ");
@@ -60,11 +61,13 @@ public class App {
                     break;
                 case 6:
                     Input.close();
+                    mainloop = false;
                     System.exit(0);
+
                     break;
 
             }
 
-        } while (true);
+        } while (mainloop);
     }
 }

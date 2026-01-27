@@ -36,9 +36,9 @@ public class OrderHanterare {
                     V = true;
                     throw new IllegalArgumentException("Dena metod förväntar sig en int");
                 }
-                if (val > 3 && val < 1) {
+                if (val > 4 || val < 1) {
                     V = true;
-                    System.out.println("Ange ett val mellan 1-3");
+                    System.out.println("Ange ett val mellan 1-4");
                 }
             }
             V = true;
@@ -53,7 +53,7 @@ public class OrderHanterare {
             switch (val) {
                 case 1:
 
-                System.out.println("--------------------");
+                    System.out.println("--------------------");
                     System.out.println(
                             "Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
 
@@ -174,7 +174,7 @@ public class OrderHanterare {
                     Trapphus = (boolean) lf.get(0);
                     lf.clear();
 
-                    System.out.println("-----------------------");
+                    System.out.println("- - - - - - - - - - - -");
                     System.out.println("Ange dimentionerna för lägenhetterna.");
                     lf = ValMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) lf.get(0);
@@ -182,10 +182,6 @@ public class OrderHanterare {
 
                     lf = ValMetod("Antal rum", "int", SC);
                     antalRum = (int) lf.get(0);
-                    lf.clear();
-
-                    lf = ValMetod("Försäljningspris", "float", SC);
-                    försäljningsPris = (float) lf.get(0);
                     lf.clear();
 
                     lf = ValMetod("Byggnads kostnader", "float", SC);
@@ -196,7 +192,7 @@ public class OrderHanterare {
                             Trapphus, Hiss, tomtPris, tomtYta, planYta, antalRum, försäljningsPris,
                             byggnadsKostndader);
                     for (int i = 0; i < antalVåningsplan * antalRum; i++) {
-                        Lagnehet L = new Lagnehet(planYta, antalRum, försäljningsPris);
+                        Lagnehet L = new Lagnehet(planYta, antalRum);
                         F.Lägenheter.add(L);
                     }
                     O.addEfftersöktaFastigheter(F);
@@ -205,7 +201,12 @@ public class OrderHanterare {
                     break;
 
                 case 4:
-                    ordrar.add(O);
+                    if (O.getEfftersöktaFastigheter().isEmpty()) {
+                        O = null;
+                    } else {
+                        ordrar.add(O);
+                    }
+
                     System.out.println("----------------------");
                     System.out.println("förslutter order");
                     System.out.println("----------------------");
@@ -221,46 +222,66 @@ public class OrderHanterare {
         boolean loop = true;
         boolean inerloop = true;
         int användarID = 0;
-        System.out.println("------------------------");
-        visaOrdrar(A);
-        System.out.println("-----------------------------------");
-        System.out.println("Vilken order vill du ta bort?");
 
-        while (loop) {
-            if (inerloop == false) {
-                System.out.println("det finns ingen order med det ID");
-            }
-            while (inerloop) {
-                try {
-                    System.out.print("Ange order ID: ");
-                    användarID = SC2.nextInt();
-                    SC2.nextLine();
-                    inerloop = false;
-                } catch (Exception e) {
+        if (visaOrdrar(A)) {
+            System.out.println("-----------------------------------");
+            System.out.println("Vilken order vill du ta bort?   |Om ingen, ange \"0\"|");
+
+            while (loop) {
+                if (inerloop == false) {
+                    System.out.println("-----------------------------------");
+                    System.out.println("det finns ingen order med det ID");
                     inerloop = true;
-                    throw new InputMismatchException("Fel input förväntar sig en Int");
                 }
-                if (användarID > 10000) {
-                    inerloop = true;
-                    System.out.println("du kan inte ange ett id störe än 4 sifror");
+                while (inerloop) {
+                    try {
+                        System.out.print("Ange order ID: ");
+                        användarID = SC2.nextInt();
+                        SC2.nextLine();
+                        inerloop = false;
+                    } catch (Exception e) {
+                        inerloop = true;
+                        System.out.println("-----------------------------------");
+                        throw new InputMismatchException("Fel input förväntar sig en Int");
+                    }
+                    if (användarID > 10000) {
+                        inerloop = true;
+                        System.out.println("-----------------------------------");
+                        System.out.println("du kan inte ange ett id störe än 4 sifror");
+                    }
                 }
-            }
-            for (Order order : ordrar) {
-                if (användarID == order.getOrderID()) {
+                for (Order order : ordrar) {
+                    if (användarID == order.getOrderID()) {
+                        loop = false;
+                        ordrar.remove(order);
+                        System.out.println("-----------------------------------");
+                        System.out.println("Order bortagen");
+                        System.out.println("-----------------------------------");
+                        break;
+                    }
+                }
+                if (användarID == 0) {
                     loop = false;
-                    ordrar.remove(order);
-                    System.out.println("Order bortagen");
-                    break;
+                    System.out.println("-----------------------------------");
+                    System.out.println("Stänger bortagning");
+                    System.out.println("-----------------------------------");
                 }
             }
         }
     }
 
-    public void visaOrdrar(Kund A) {
+    public boolean visaOrdrar(Kund A) {
         for (Order order : ordrar) {
-            System.out.println("-----------------------" );
-            System.out.println(order);         
+            System.out.println("-----------------------");
+            System.out.println(order);
         }
+        if (ordrar.isEmpty()) {
+            System.out.println("---------------------------------------------");
+            System.out.println("Det finns för nuvarandet inga ordrar tillagda");
+            System.out.println("---------------------------------------------");
+            return false;
+        }
+        return true;
     }
 
     public void visaProspecteradVist(Kund A) {
@@ -268,11 +289,20 @@ public class OrderHanterare {
         for (Order order : ordrar) {
             ArrayList<Fastighet> efftersöktaFastigheter = order.getEfftersöktaFastigheter();
             for (Fastighet fastighet : efftersöktaFastigheter) {
-                float pris = fastighet.get_försäljningsPris();
-                summa = +pris;
+                summa = fastighet.get_försäljningsPris();
             }
+            System.out.println(
+                    "--------------------------------------------------------------------------------");
+            System.out.println("Totalla vinsten från order med id: " + order.getOrderID()
+                    + " om alla fastigheterna säljs blir: " + summa + "kr");
+            System.out.println(
+                    "--------------------------------------------------------------------------------");
         }
-        System.out.println("Totalla vinst om alla order går igenom och fastigheterna säljs blir: " + summa + "kr");
+        if (ordrar.isEmpty()) {
+            System.out.println("---------------------------------------------");
+            System.out.println("Det finns för nuvarandet inga ordrar tillagda");
+            System.out.println("---------------------------------------------");
+        }
     }
 
     public void visaPreliminäraKostnader(Kund A) {
@@ -284,8 +314,16 @@ public class OrderHanterare {
                 float Bpris = fastighet.get_byggnadsKostnader();
                 summa = +Tpris + Bpris;
             }
+            System.out.println("---------------------------------------------------------------------------------");
+            System.out.println("De preliminära kostnaderna samanlagt för ordern med id: " + order.getOrderID()
+                    + ", blir: " + summa + "kr");
+            System.out.println("---------------------------------------------------------------------------------");
         }
-        System.out.println(" Kostnaderna för orderna samanlagt blir: " + summa + "kr");
+        if (ordrar.isEmpty()) {
+            System.out.println("---------------------------------------------");
+            System.out.println("Det finns för nuvarandet inga ordrar tillagda");
+            System.out.println("---------------------------------------------");
+        }
     }
 
     public List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
@@ -305,7 +343,7 @@ public class OrderHanterare {
                             if (talInt < 1) {
                                 klar = false;
                                 System.out.println("Ange ett värde större än 0");
-                                System.out.println("Ange: "+Varibelnamn);
+                                System.out.println("Ange: " + Varibelnamn);
                             } else {
                                 klar = true;
                             }
@@ -331,7 +369,7 @@ public class OrderHanterare {
 
                     case "boolean":
                         System.out.println("\"true\" eller \"false\"");
-                        boolean talboolean = SC.nextBoolean(); 
+                        boolean talboolean = SC.nextBoolean();
                         ReturnLista.add(talboolean);
                         SC.nextLine();
                         V = false;
@@ -352,6 +390,6 @@ public class OrderHanterare {
         }
 
         return ReturnLista;
-    } // ska returnera obejekt med rätt datatyp
+    }
 
 }
