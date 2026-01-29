@@ -1,11 +1,9 @@
+package orderhanterare;
 import java.util.ArrayList;
 import Fastigheter.*;
 import java.time.LocalDate;
 
-/*
-* Klass: Order
-* är ett obeject vilket skappas och laggrar fastigheter som användaren har valt. 
- */
+/** Klass: Order, är ett obeject vilket skappas och laggrar fastigheter som användaren har valt. */
 public class Order {
     /** Datumet då ordern skappades. */
     private LocalDate orderDatum;
@@ -43,7 +41,7 @@ public class Order {
 
     /**
      * get_EfftersöktaFastigheter hämtar listan med skappade fastigheter i Order.
-     * @return ArrayList<Fastighet>, retunerar efftersöktaFastigheter. 
+     * @return @return ArrayList&lt;Fastighet&gt;, retunerar efftersöktaFastigheter. 
      */
     public ArrayList<Fastighet> get_efftersöktaFastigheter() {
         return efftersöktaFastigheter;

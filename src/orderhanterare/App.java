@@ -1,3 +1,4 @@
+package orderhanterare;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,11 +9,17 @@ import java.util.Scanner;
 *Man ska kunna 1. skappa ordrar. 2. ta bort dem. 3. vissa skappade ordrar. 4. visa preliminära kostnader 5. visa prospecterad vinst av alla ordrar.
 */
 
-/*
-* Klass: App
-* Är där användaren gör sinna val för vad som ska hända med ordrarna. 
-*/
+/** Klass: App, Är där användaren gör sinna val för vad som ska hända med ordrarna. */
 public class App {
+
+    /**Defult konstruktorn */
+    public App(){}
+
+/**
+* main är huvud metoden för programet
+* @param args IDK
+* @throws Exception felmedellanden som man kan se i cl.
+*/
     public static void main(String[] args) throws Exception {
         /** Skappar en instans av Orderhanteraren */
         OrderHanterare OrderHanterare = new OrderHanterare();

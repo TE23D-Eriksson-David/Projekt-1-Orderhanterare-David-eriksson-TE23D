@@ -1,9 +1,6 @@
 package Fastigheter;
 
-/*
-* Klass: Garage
-* Detta är en fastighets typ som kan skappas och läggas till i order.
-*/
+/** Klass: Garage, Detta är en fastighets typ som kan skappas och läggas till i order.*/
 public class Garage extends Fastighet {
     /**är hur många utrymen det finns i fastigheten där man kan förvara saker. */
     private int förvaringsSectioner;

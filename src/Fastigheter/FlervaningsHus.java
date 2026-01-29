@@ -1,12 +1,7 @@
 package Fastigheter;
 import java.util.ArrayList;
 
-/*
-* Klass: FlervaningsHus
-* Detta är en fastighets typ som kan skappas och läggas till i order.
-* Detta obeject innehåller / skappar och laggrar Lagenhet's instanser i sig.
-*/
-
+/** Klass: FlervaningsHus, Detta är en fastighets typ som kan skappas och läggas till i order. Detta obeject innehåller / skappar och laggrar Lagenhet's instanser i sig.*/
 public class FlervaningsHus extends Fastighet { 
     /**Inehåller hur många våningsplan det finns i fastigheten. */
     private int antalVåningsplan;
@@ -55,7 +50,7 @@ public class FlervaningsHus extends Fastighet {
 
     /**
      * get_Lägenheter hämtar listan med alla skappade lägenheter i fastigheten.
-     * @return ArrayList<Lagnehet>, Lägenheter.
+     * @return ArrayList&lt;Lagnehet&gt; Lägenheter.
      */
     public ArrayList<Lagnehet> get_Lägenheter() {
         return Lägenheter;

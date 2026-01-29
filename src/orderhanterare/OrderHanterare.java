@@ -1,3 +1,4 @@
+package orderhanterare;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -5,19 +6,14 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import Fastigheter.*;
 
-/*
-* Klass: OrderHanterare
-* Dena klass är vad som utför användarens förfrågningar kring vad som ska hända med ordrarna.
-* Dena klass styr & lagrar ordrarna.
-* Skappar ordrarna och fastigheterna som lagras i dem.
-*/
-
+/** Klass: OrderHanterare 
+ *Dena klass är vad som utför användarens förfrågningar kring vad som ska hända med ordrarna. 
+ *Dena klass styr och lagrar ordrarna. Skappar ordrarna och fastigheterna som lagras i dem.
+ */
 public class OrderHanterare {
 /**Lagrar skappade ordrar */
     private ArrayList<Order> ordrar;
-/*
-*Skappar ett nytt OrderHanterare med tomma värden. 
-*/
+/**Skappar ett nytt OrderHanterare med tomma värden. */
     OrderHanterare() {
         ordrar = new ArrayList<Order>();
     }
@@ -334,9 +330,7 @@ public class OrderHanterare {
         }
     }
 
-    /*
-     * visaPreliminäraKostnader beräknar vad alla ordrar kommer kosta tillsammans 
-     */
+/** visaPreliminäraKostnader beräknar vad alla ordrar kommer kosta tillsammans */
     public void visaPreliminäraKostnader() {
         double summa = 0;
         for (Order order : ordrar) {
@@ -363,7 +357,7 @@ public class OrderHanterare {
      * @param Varibelnamn vad är det för något som du vill att användaren ska ange  
      * @param datatyp datatypen som du vill att svaret ska vara i.
      * @param SC Scanner för att läsa av användarens input.
-     * @return List<Object>, Retunerar ett list obejekt som innehåller ett obejekt men en data typ.
+     * @return @return List&lt;Object&gt;, Retunerar ett list obejekt som innehåller ett obejekt men en data typ.
      * Denna metod är riskabel efftersom man måste ha rätt korisponderande datatyp när man kallar på metoden.
      */
     public List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {

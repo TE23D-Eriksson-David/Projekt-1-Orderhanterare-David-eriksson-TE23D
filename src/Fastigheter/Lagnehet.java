@@ -1,9 +1,6 @@
 package Fastigheter;
 
-/*
-* Klass: Lagenhet
-* Deta är ett insatns obejekt som tillhör FlervaningHus och lagras där. 
-*/
+/** Klass: Lagnehet, Deta är ett insatns obejekt som tillhör FlervaningHus och lagras där. */
 public class Lagnehet {
     /**anger planytan i lägenhetn  */
     public int planYta; 

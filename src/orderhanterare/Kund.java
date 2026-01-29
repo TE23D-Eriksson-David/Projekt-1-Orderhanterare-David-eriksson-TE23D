@@ -1,8 +1,5 @@
-/*
-* Klass: Kund
-* Dena klass ska fungera som ett kundobejct vilket sparrar användarens personuppgifter.
-*/
-
+package orderhanterare;
+/** Klass: Kund, Dena klass ska fungera som ett kundobejct vilket sparrar användarens personuppgifter.*/
 public class Kund {
 /** Kundens förnamn t.ex. Johan */
 private String förnamn;

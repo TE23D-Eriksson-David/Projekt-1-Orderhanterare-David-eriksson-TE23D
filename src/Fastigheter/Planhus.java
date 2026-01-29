@@ -1,9 +1,6 @@
 package Fastigheter;
 
-/* 
-* Klass: Planhus
-* Detta är en fastighets typ som kan skappas och läggas till i order.
-*/
+/** Klass: Planhus, Detta är en fastighets typ som kan skappas och läggas till i order.*/
 public class Planhus extends Fastighet {
     /**antal rum i fastighetn */
     private int antalRum;
