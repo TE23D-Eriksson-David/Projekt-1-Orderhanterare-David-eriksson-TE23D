@@ -1,48 +1,63 @@
 import java.util.ArrayList;
+import Fastigheter.*;
 import java.time.LocalDate;
 
+/*
+* Klass: Order
+* är ett obeject vilket skappas och laggrar fastigheter som användaren har valt. 
+ */
 public class Order {
-
+    /** Datumet då ordern skappades. */
     private LocalDate orderDatum;
+    /** Ett order id som används för att identifigera ordrarna. */
     private int orderID;
+    /** Lagrar kundens fulla namn, förnamn+effternamn. */
     private String kundNamn;  
+    /** Lagrar kundens email. */
     private String kundEmail;
-
+    /** Lagrar kundens skappade fastighetter. */
     private ArrayList<Fastighet> efftersöktaFastigheter;
 
+    /**
+     * Skappar ett nyt Order obejekt med angivna värden.
+     * @param orderDatum Datumet då ordern skappades.
+     * @param orderID Ett order id som används för att identifigera ordrarna.
+     * @param kundNamn Lagrar kundens fulla namn, förnamn+effternamn.
+     * @param kundEmail Lagrar kundens email.
+     */
     Order(LocalDate orderDatum, int orderID, String kundNamn, String kundEmail){
         this.orderDatum = orderDatum;
         this.orderID = orderID;
         this.kundNamn = kundNamn;
         this.kundEmail = kundEmail;
-
         efftersöktaFastigheter = new ArrayList<Fastighet>();
     }
 
-    public LocalDate getOrderDatum() {
-        return orderDatum;
-    }
-
-    public int getOrderID() {
+/**
+ * get_OrderID hämtar ID av Order
+ * @return returner orderID, t.ex 3894
+ */
+    public int get_orderID() {
         return orderID;
     }
 
-    public ArrayList<Fastighet> getEfftersöktaFastigheter() {
+    /**
+     * get_EfftersöktaFastigheter hämtar listan med skappade fastigheter i Order.
+     * @return ArrayList<Fastighet>, retunerar efftersöktaFastigheter. 
+     */
+    public ArrayList<Fastighet> get_efftersöktaFastigheter() {
         return efftersöktaFastigheter;
     }
 
-    public void setKundNamn(String kundNamn) {
-        this.kundNamn = kundNamn;
-    }
-
-    public void setKundEmail(String kundEmail) {
-        this.kundEmail = kundEmail;
-    }
-
+    /**
+     * addEfftersöktaFastigheter lägger till en Fastighet's instans i efftersöktaFastigheter's listan. 
+     * @param F instans av en fastighets typ.
+     */
     public void addEfftersöktaFastigheter(Fastighet F){
         efftersöktaFastigheter.add(F);
     }
 
+    /** toString skriver utt all information inom en Order */
     @Override
     public String toString() {
         String fastighetsinformation = "";
