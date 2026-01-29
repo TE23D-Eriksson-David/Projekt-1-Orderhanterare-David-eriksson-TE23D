@@ -3,9 +3,9 @@ package Fastigheter;
 /** Klass: Lagnehet, Deta är ett insatns obejekt som tillhör FlervaningHus och lagras där. */
 public class Lagnehet {
     /**anger planytan i lägenhetn  */
-    public int planYta; 
+    private int planYta; 
     /** anger hur många rum det kommer finnas i lägenheten */
-    public int antalRum;
+    private int antalRum;
 
     /**
      * Skappar ett nyt Lagnehet's obejekt med angivna värden.

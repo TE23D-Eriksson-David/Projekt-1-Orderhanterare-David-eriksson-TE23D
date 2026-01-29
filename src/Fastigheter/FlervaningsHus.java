@@ -16,7 +16,7 @@ public class FlervaningsHus extends Fastighet {
     /**Om det finns en hiss eller inte. */
     private boolean Hiss;
     /**Är en lista vilket inehåller instanser av skappade Lagenhet */
-    private ArrayList<Lagnehet> Lägenheter = new ArrayList<Lagnehet>();   
+    private ArrayList<Lagnehet> lägenheter = new ArrayList<Lagnehet>();   
 
     /**
      * Skappar ett nyt FlervaningsHus's obejekt med angivna värden.
@@ -45,15 +45,15 @@ public class FlervaningsHus extends Fastighet {
     /** toString är en metod som kallar till föräldrar klassen och lägger till sin egen information som skrivs ut. */
     @Override
     public String toString() {
-        return super.toString() + "\nAntal våningsplan: "+antalVåningsplan+"\nLägenheter pär plan: "+lägenheterPärPlan+"\nAntal föråd: "+antalFöråd+"\nFöråds yta: "+förådsYta+"\nTrapphus: "+ Trapphus+ "\nHiss: "+Hiss+ "\n----------------\nLägenhets specifikationer"+ Lägenheter.getFirst().toString(); 
+        return super.toString() + "\nAntal våningsplan: "+antalVåningsplan+"\nLägenheter pär plan: "+lägenheterPärPlan+"\nAntal föråd: "+antalFöråd+"\nFöråds yta: "+förådsYta+"\nTrapphus: "+ Trapphus+ "\nHiss: "+Hiss+ "\n----------------\nLägenhets specifikationer"+ lägenheter.getFirst().toString(); 
     }
 
     /**
-     * get_Lägenheter hämtar listan med alla skappade lägenheter i fastigheten.
-     * @return ArrayList&lt;Lagnehet&gt; Lägenheter.
+     * get_lägenheter hämtar listan med alla skappade lägenheter i fastigheten.
+     * @return ArrayList&lt;Lagnehet&gt; lägenheter.
      */
-    public ArrayList<Lagnehet> get_Lägenheter() {
-        return Lägenheter;
+    public ArrayList<Lagnehet> get_lägenheter() {
+        return lägenheter;
     }
 
 }

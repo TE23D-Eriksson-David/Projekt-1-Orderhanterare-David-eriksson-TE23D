@@ -66,27 +66,27 @@ public class OrderHanterare {
                     System.out.println(
                             "Du har valt att skappa en: Villa \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Byggnads kostnader: odefinerat");
 
-                    List<Object> listaPlanhusVal = ValMetod("Plan yta (m2)", "int", SC);
+                    List<Object> listaPlanhusVal = valMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) listaPlanhusVal.get(0);
                     listaPlanhusVal.clear();
 
-                    listaPlanhusVal = ValMetod("Antal rum", "int", SC);
+                    listaPlanhusVal = valMetod("Antal rum", "int", SC);
                     antalRum = (int) listaPlanhusVal.get(0);
                     listaPlanhusVal.clear();
 
-                    listaPlanhusVal = ValMetod("Försäljnings pris", "float", SC);
+                    listaPlanhusVal = valMetod("Försäljnings pris", "float", SC);
                     försäljningsPris = (float) listaPlanhusVal.get(0);
                     listaPlanhusVal.clear();
 
-                    listaPlanhusVal = ValMetod("Tomt pris", "float", SC);
+                    listaPlanhusVal = valMetod("Tomt pris", "float", SC);
                     tomtPris = (float) listaPlanhusVal.get(0);
                     listaPlanhusVal.clear();
 
-                    listaPlanhusVal = ValMetod("Tomt yta (m2)", "int", SC);
+                    listaPlanhusVal = valMetod("Tomt yta (m2)", "int", SC);
                     tomtYta = (int) listaPlanhusVal.get(0);
                     listaPlanhusVal.clear();
 
-                    listaPlanhusVal = ValMetod("Byggnads Kostnader", "float", SC);
+                    listaPlanhusVal = valMetod("Byggnads Kostnader", "float", SC);
                     byggnadsKostndader = (float) listaPlanhusVal.get(0);
                     listaPlanhusVal.clear();
 
@@ -103,31 +103,31 @@ public class OrderHanterare {
                     System.out.println(
                             " Du har valt att skappa ett: Garage \n Planyta: odefinerat \n Antal rum: odefinerat \n Försäljningspris: odefinerat \n Tomt pris: odefinerat \n Tomt yta: odefinerat \n Förvarings sectioner \n");
 
-                    List<Object> listaGarageVal = ValMetod("Plan yta (m2)", "int", SC);
+                    List<Object> listaGarageVal = valMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
-                    listaGarageVal = ValMetod("Antal rum", "int", SC);
+                    listaGarageVal = valMetod("Antal rum", "int", SC);
                     antalRum = (int) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
-                    listaGarageVal = ValMetod("Förvarings sectioner", "int", SC);
+                    listaGarageVal = valMetod("Förvarings sectioner", "int", SC);
                     förvaringsSectioner = (int) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
-                    listaGarageVal = ValMetod("Försäljnings pris", "float", SC);
+                    listaGarageVal = valMetod("Försäljnings pris", "float", SC);
                     försäljningsPris = (float) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
-                    listaGarageVal = ValMetod("Tomt pris", "float", SC);
+                    listaGarageVal = valMetod("Tomt pris", "float", SC);
                     tomtPris = (float) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
-                    listaGarageVal = ValMetod("Tomt yta (m2)", "int", SC);
+                    listaGarageVal = valMetod("Tomt yta (m2)", "int", SC);
                     tomtYta = (int) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
-                    listaGarageVal = ValMetod("Byggnads kostnader", "float", SC);
+                    listaGarageVal = valMetod("Byggnads kostnader", "float", SC);
                     byggnadsKostndader = (float) listaGarageVal.get(0);
                     listaGarageVal.clear();
 
@@ -151,49 +151,49 @@ public class OrderHanterare {
                     System.out.println(
                             " Du har valt att skappa ett: Flervånings hus \n Tomt yta: odefinerat \n Tomt pris: odefinerat \n Antal våningsplan: odefinerat \n Lägenheter pär plan: odefinerat \n Antal föråd: odefinerat \n Föråds yta: odefinerat \n Trapphus: odefinerat \n Hiss: odefinerat");
 
-                    List<Object> listaFlervåningsHusVal = ValMetod("Tomt yta", "int", SC);
+                    List<Object> listaFlervåningsHusVal = valMetod("Tomt yta", "int", SC);
                     tomtYta = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Tomt pris", "float", SC);
+                    listaFlervåningsHusVal = valMetod("Tomt pris", "float", SC);
                     tomtPris = (float) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Antal våningsplan", "int", SC);
+                    listaFlervåningsHusVal = valMetod("Antal våningsplan", "int", SC);
                     antalVåningsplan = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Lägenheter pär plan", "int", SC);
+                    listaFlervåningsHusVal = valMetod("Lägenheter pär plan", "int", SC);
                     lägenheterPärPlan = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Antal föråd", "int", SC);
+                    listaFlervåningsHusVal = valMetod("Antal föråd", "int", SC);
                     antalFöråd = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Föråds yta (m2)", "int", SC);
+                    listaFlervåningsHusVal = valMetod("Föråds yta (m2)", "int", SC);
                     förådsYta = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Hiss", "boolean", SC);
+                    listaFlervåningsHusVal = valMetod("Hiss", "boolean", SC);
                     Hiss = (boolean) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Trapphus", "boolean", SC);
+                    listaFlervåningsHusVal = valMetod("Trapphus", "boolean", SC);
                     Trapphus = (boolean) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
                     System.out.println("- - - - - - - - - - - -");
                     System.out.println("Ange dimentionerna för lägenhetterna.");
-                    listaFlervåningsHusVal = ValMetod("Plan yta (m2)", "int", SC);
+                    listaFlervåningsHusVal = valMetod("Plan yta (m2)", "int", SC);
                     planYta = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Antal rum", "int", SC);
+                    listaFlervåningsHusVal = valMetod("Antal rum", "int", SC);
                     antalRum = (int) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
-                    listaFlervåningsHusVal = ValMetod("Byggnads kostnader", "float", SC);
+                    listaFlervåningsHusVal = valMetod("Byggnads kostnader", "float", SC);
                     byggnadsKostndader = (float) listaFlervåningsHusVal.get(0);
                     listaFlervåningsHusVal.clear();
 
@@ -202,7 +202,7 @@ public class OrderHanterare {
                             byggnadsKostndader);
                     for (int i = 0; i < antalVåningsplan * antalRum; i++) {
                         Lagnehet L = new Lagnehet(planYta, antalRum);
-                        F.get_Lägenheter().add(L);
+                        F.get_lägenheter().add(L);
                     }
                     Order.addEfftersöktaFastigheter(F);
                     System.out.println("--------------------");
@@ -353,14 +353,14 @@ public class OrderHanterare {
     }
 
     /**
-     * ValMetod är en metod för att besvara specifika frågor, där använderaren kan ange olika data typer.
+     * valMetod är en metod för att besvara specifika frågor, där använderaren kan ange olika data typer.
      * @param Varibelnamn vad är det för något som du vill att användaren ska ange  
      * @param datatyp datatypen som du vill att svaret ska vara i.
      * @param SC Scanner för att läsa av användarens input.
      * @return @return List&lt;Object&gt;, Retunerar ett list obejekt som innehåller ett obejekt men en data typ.
      * Denna metod är riskabel efftersom man måste ha rätt korisponderande datatyp när man kallar på metoden.
      */
-    public List<Object> ValMetod(String Varibelnamn, String datatyp, Scanner SC) {
+    public List<Object> valMetod(String Varibelnamn, String datatyp, Scanner SC) {
         List<Object> ReturnLista = new ArrayList<>();
         boolean väljer = true;
         System.out.println("---------------------");
