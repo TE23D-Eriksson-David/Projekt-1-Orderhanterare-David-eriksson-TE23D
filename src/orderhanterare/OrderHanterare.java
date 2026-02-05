@@ -314,7 +314,7 @@ public class OrderHanterare {
             ArrayList<Fastighet> efftersöktaFastigheter = order.get_efftersöktaFastigheter();
             for (Fastighet fastighet : efftersöktaFastigheter) {
                 summa = fastighet.get_försäljningsPris();
-                summa =- fastighet.get_byggnadsKostnader();
+                summa = summa - fastighet.get_byggnadsKostnader();
             }
             System.out.println(
                     "--------------------------------------------------------------------------------");
@@ -338,7 +338,7 @@ public class OrderHanterare {
             for (Fastighet fastighet : efftersöktaFastigheter) {
                 float Tpris = fastighet.get_tomtPris();
                 float Bpris = fastighet.get_byggnadsKostnader();
-                summa = +Tpris + Bpris;
+                summa = Tpris + Bpris;
             }
             System.out.println("---------------------------------------------------------------------------------");
             System.out.println("De preliminära kostnaderna samanlagt för ordern med id: " + order.get_orderID()
