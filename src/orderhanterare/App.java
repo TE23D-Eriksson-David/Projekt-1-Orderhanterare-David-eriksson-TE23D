@@ -34,7 +34,7 @@ public class App {
         /** Tar emot & lagrar, namn,effternamn & email adress av en kund */
         Kund K = new Kund("Johan", "Kateby", "johanerik.kateby@ga.ntig.se");
 
-
+        
         do {
             System.out.println(
                     "1. Lägg till order. \n2. Ta bort order.\n3. Visa ordrar. \n4. Visa preliminära kostnader. \n5. Visa prospecterad vinst. \n6. Stäng programet \n---------------------\nAnge en sifra som korisponderar med ett av valen");

@@ -3,15 +3,15 @@ package Fastigheter;
 /** Abstract Klass: Fastighet, Implementeras av alla fastighets typer som kan läggas till i ordern. Innehåller variabler och metoder som dellas av alla implemnterande klasser.*/
 public abstract class Fastighet {
     /**priset på marken där fastigheten ska stå.*/
-    private float tomtPris;
+    protected float tomtPris;
     /**ytan på marken där fastigheten ska stå.*/
-    private int tomtYta;
+    protected int tomtYta;
     /**den totala ytan i fastigheten. */
-    private int planYta; 
+    protected int planYta; 
     /** priset som fastigheten kommer säljas för när det är färdigbyggt. */
-    private float försäljningsPris;
+    protected float försäljningsPris;
     /**Vad det kommer att kosta för att bygga fastigheten. */
-    private float byggnadsKostnader; 
+    protected float byggnadsKostnader; 
 
     /**
      * Skappar ett nyt Fastighet's obejekt med angivna värden.
